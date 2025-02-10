@@ -77,6 +77,13 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
     },
     ref,
   ) => {
+    const [imageError, setImageError] = React.useState(false);
+
+    const handleImageError = () => {
+      console.log('Image failed to load, hiding image section');
+      setImageError(true);
+    };
+
     return (
       <div className={cn("relative", className)} ref={ref} {...props}>
         <div className="absolute top-0 z-[0] h-screen w-screen bg-purple-950/10 dark:bg-purple-950/10 bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
@@ -111,17 +118,19 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                 </span>
               </div>
             </div>
-            {bottomImage && (
+            {bottomImage && !imageError && (
               <div className="mt-32 mx-10 relative z-10">
                 <img
                   src={bottomImage.light}
                   className="w-full shadow-lg rounded-lg border border-gray-200 dark:hidden"
                   alt="Dashboard preview"
+                  onError={handleImageError}
                 />
                 <img
                   src={bottomImage.dark}
                   className="hidden w-full shadow-lg rounded-lg border border-gray-800 dark:block"
                   alt="Dashboard preview"
+                  onError={handleImageError}
                 />
               </div>
             )}
