@@ -8,7 +8,7 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  base: '/host4u/',
+  base: '/',
   build: {
     outDir: 'dist',
     sourcemap: true
