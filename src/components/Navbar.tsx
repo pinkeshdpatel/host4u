@@ -47,23 +47,23 @@ const Navbar = () => {
                 </Link>
                 <Link
                   to="/upload"
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Upload Game
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Sign Out
                 </button>
               </>
             ) : (
               <Link
-                to="/upload"
+                to="/auth"
                 className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
               >
-                Get Started
+                Sign In
               </Link>
             )}
           </div>
