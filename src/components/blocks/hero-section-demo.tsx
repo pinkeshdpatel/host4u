@@ -10,10 +10,10 @@ function HeroSectionDemo() {
       }}
       description="Upload and host your HTML5 games with ease. Get a shareable link in seconds and let players enjoy your creations from anywhere."
       ctaText="Start Hosting"
-      ctaHref="/host4u/upload"
+      ctaHref="/upload"
       bottomImage={{
-        light: "/host4u/dashboard-dark.png",
-        dark: "/host4u/dashboard-dark.png",
+        light: "/assets/dashboard-dark.png",
+        dark: "/assets/dashboard-dark.png",
       }}
       gridOptions={{
         angle: 65,

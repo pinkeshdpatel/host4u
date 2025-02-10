@@ -40,7 +40,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
 function App() {
   return (
-    <Router basename="/host4u">
+    <Router>
       <div className="min-h-screen bg-gray-950">
         <Toaster 
           position="top-right"
