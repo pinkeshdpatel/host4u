@@ -15,6 +15,7 @@
     "@supabase/supabase-js": "^2.39.7",
     "adm-zip": "^0.5.16",
     "axios": "^1.7.9",
+    "clsx": "^2.1.1",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -30,6 +31,7 @@
     "react-dropzone": "^14.2.3",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.22.2",
+    "tailwind-merge": "^3.0.1",
     "unrar-js": "^0.2.3"
   },
   "devDependencies": {
