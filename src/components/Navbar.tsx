@@ -2,10 +2,11 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import toast from 'react-hot-toast';
+import { User } from '@supabase/supabase-js';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [user, setUser] = React.useState(null);
+  const [user, setUser] = React.useState<User | null>(null);
 
   React.useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -68,54 +69,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav>
-  );
-};
-
-          <Link to="/" className="flex items-center space-x-2">
-            <Upload className="w-6 h-6 text-indigo-600" />
-            <span className="font-bold text-xl">GameHost</span>
-          </Link>
-          
-          <div className="flex items-center space-x-6">
-            <Link to="/" className="flex items-center space-x-1 text-gray-600 hover:text-indigo-600">
-              <Home className="w-5 h-5" />
-              <span>Home</span>
-            </Link>
-            <Link to="/upload" className="flex items-center space-x-1 text-gray-600 hover:text-indigo-600">
-              <Upload className="w-5 h-5" />
-              <span>Upload</span>
-            </Link>
-            {user && (
-              <Link to="/dashboard" className="flex items-center space-x-1 text-gray-600 hover:text-indigo-600">
-                <LayoutDashboard className="w-5 h-5" />
-                <span>Dashboard</span>
-              </Link>
-            )}
-            {user ? (
-              <button
-                onClick={handleSignOut}
-                className="flex items-center space-x-1 text-gray-600 hover:text-indigo-600"
-              >
-                <User className="w-5 h-5" />
-                <span>Sign Out</span>
-              </button>
-            ) : (
-              <button
-                onClick={() => setIsAuthModalOpen(true)}
-                className="flex items-center space-x-1 text-gray-600 hover:text-indigo-600"
-              >
-                <User className="w-5 h-5" />
-                <span>Sign In</span>
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-      <AuthModal
-        isOpen={isAuthModalOpen}
-        onClose={() => setIsAuthModalOpen(false)}
-      />
     </nav>
   );
 };
