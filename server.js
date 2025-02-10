@@ -18,7 +18,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config();
 
 const NETLIFY_API = 'https://api.netlify.com/api/v1';
-const NETLIFY_TOKEN = process.env.VITE_NETLIFY_TOKEN;
+const NETLIFY_TOKEN = process.env.VITE_NETLIFY_TOKEN; // This is now optional
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
 
@@ -33,17 +33,19 @@ if (!GITHUB_USERNAME) {
   process.exit(1);
 }
 
-if (!NETLIFY_TOKEN) {
-  console.error('Netlify token is not configured. Please set VITE_NETLIFY_TOKEN in your .env file');
-  process.exit(1);
-}
+// Remove Netlify token validation since we're not using it
+// if (!NETLIFY_TOKEN) {
+//   console.error('Netlify token is not configured. Please set VITE_NETLIFY_TOKEN in your .env file');
+//   process.exit(1);
+// }
 
 // Define allowed origins
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
   'http://localhost:5175',
-  'https://host4u-web.onrender.com'
+  'https://host4u-web.onrender.com',
+  'https://pinkeshdpatel.github.io'
 ];
 
 // Create Express app
