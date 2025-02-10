@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Upload from './pages/Upload';
 import { HeroSectionDemo } from './components/blocks/hero-section-demo';
@@ -10,10 +9,30 @@ import { HeroSectionDemo } from './components/blocks/hero-section-demo';
 function App() {
   return (
     <Router basename="/host4u">
-      <div className="min-h-screen bg-gray-50">
-        <Toaster position="top-right" />
+      <div className="min-h-screen bg-gray-950">
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: '#1f2937',
+              color: '#fff',
+            },
+            success: {
+              iconTheme: {
+                primary: '#10b981',
+                secondary: '#1f2937',
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: '#ef4444',
+                secondary: '#1f2937',
+              },
+            },
+          }}
+        />
         <Navbar />
-        <main className="container mx-auto px-4 py-8">
+        <main>
           <Routes>
             <Route path="/" element={<HeroSectionDemo />} />
             <Route path="/upload" element={<Upload />} />

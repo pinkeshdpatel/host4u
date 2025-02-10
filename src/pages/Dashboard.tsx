@@ -61,27 +61,27 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+      <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">My Games</h1>
+        <h1 className="text-3xl font-bold text-white">My Games</h1>
         <div className="flex gap-4">
           <button
             onClick={loadGames}
-            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+            className="inline-flex items-center px-4 py-2 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-gray-800 hover:bg-gray-700 transition-colors"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
             Refresh
           </button>
           <Link
             to="/upload"
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors"
           >
             <Upload className="w-4 h-4 mr-2" />
             Upload New Game
@@ -91,11 +91,11 @@ const Dashboard = () => {
 
       {error ? (
         <div className="text-center py-12">
-          <h2 className="text-xl font-medium text-red-600 mb-4">Error Loading Games</h2>
-          <p className="text-gray-600 mb-6">{error}</p>
+          <h2 className="text-xl font-medium text-red-400 mb-4">Error Loading Games</h2>
+          <p className="text-gray-400 mb-6">{error}</p>
           <button
             onClick={loadGames}
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
             Try Again
@@ -103,11 +103,11 @@ const Dashboard = () => {
         </div>
       ) : games.length === 0 ? (
         <div className="text-center py-12">
-          <h2 className="text-xl font-medium text-gray-900 mb-4">No games uploaded yet</h2>
-          <p className="text-gray-600 mb-6">Upload your first game to get started!</p>
+          <h2 className="text-xl font-medium text-white mb-4">No games uploaded yet</h2>
+          <p className="text-gray-400 mb-6">Upload your first game to get started!</p>
           <Link
             to="/upload"
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors"
           >
             <Upload className="w-4 h-4 mr-2" />
             Upload Game
@@ -118,11 +118,11 @@ const Dashboard = () => {
           {games.map((game) => (
             <div
               key={game.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
+              className="bg-gray-800 rounded-lg shadow-xl overflow-hidden border border-gray-700 hover:border-purple-500 transition-colors"
             >
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-2">{game.name}</h2>
-                <p className="text-gray-600 text-sm mb-4">
+                <h2 className="text-xl font-semibold text-white mb-2">{game.name}</h2>
+                <p className="text-gray-400 text-sm mb-4">
                   Deployed on {new Date(game.created_at).toLocaleDateString()}
                 </p>
                 <div className="space-y-3">
@@ -131,7 +131,7 @@ const Dashboard = () => {
                       href={game.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                      className="flex-1 inline-flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors"
                     >
                       <Play className="w-4 h-4 mr-2" />
                       Play Game
@@ -140,7 +140,7 @@ const Dashboard = () => {
                       href={game.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                      className="inline-flex items-center px-3 py-2 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-gray-800 hover:bg-gray-700 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4" />
                     </a>
@@ -149,7 +149,7 @@ const Dashboard = () => {
                     href={game.repo_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                    className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-gray-800 hover:bg-gray-700 transition-colors"
                   >
                     <Github className="w-4 h-4 mr-2" />
                     View Source
