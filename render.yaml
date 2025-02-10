@@ -1,8 +1,9 @@
 services:
-  # Backend API service
+  # Backend API service only (frontend will be on GitHub Pages)
   - type: web
     name: host4u-api
     env: node
+    plan: free # Using free tier
     buildCommand: npm install
     startCommand: node server.js
     envVars:
@@ -15,8 +16,6 @@ services:
       - key: GITHUB_TOKEN
         sync: false
       - key: GITHUB_USERNAME
-        sync: false
-      - key: VITE_NETLIFY_TOKEN
         sync: false
       - key: NODE_ENV
         value: production
