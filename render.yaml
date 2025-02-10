@@ -1,0 +1,36 @@
+services:
+  # Backend API service
+  - type: web
+    name: host4u-api
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_USERNAME
+        sync: false
+      - key: VITE_NETLIFY_TOKEN
+        sync: false
+      - key: NODE_ENV
+        value: production
+
+  # Frontend service
+  - type: web
+    name: host4u-web
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
+    envVars:
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false
+      - key: VITE_API_URL
+        value: https://host4u-api.onrender.com 
