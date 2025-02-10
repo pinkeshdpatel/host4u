@@ -33,8 +33,11 @@ const Dashboard = () => {
 
       const response = await fetch(`${API_URL}/api/games`, {
         headers: {
-          'Authorization': `Bearer ${session.access_token}`
-        }
+          'Authorization': `Bearer ${session.access_token}`,
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        mode: 'cors',
       });
       
       if (!response.ok) {

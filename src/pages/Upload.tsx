@@ -39,7 +39,7 @@ const Upload = () => {
     return () => subscription.unsubscribe();
   }, [navigate]);
 
-  const handleUpload = useCallback(async (files: File[]) => {
+  const handleUpload = async (files: File[]) => {
     if (!session) {
       toast.error('Please sign in to upload files');
       navigate('/login');
@@ -89,14 +89,16 @@ const Upload = () => {
           'Authorization': `Bearer ${currentSession.access_token}`,
         },
         body: formData,
+        credentials: 'include',
+        mode: 'cors',
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
+        const data = await response.json();
         throw new Error(data.error || data.details || 'Failed to upload game');
       }
 
+      const data = await response.json();
       setDeployedUrl(data.url);
       toast.success('Game uploaded and deployed successfully!', {
         duration: 5000,
@@ -113,7 +115,7 @@ const Upload = () => {
     } finally {
       setIsUploading(false);
     }
-  }, [session, gameName, navigate]);
+  };
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (!session) {

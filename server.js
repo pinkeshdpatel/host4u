@@ -45,7 +45,8 @@ const allowedOrigins = [
   'http://localhost:5174',
   'http://localhost:5175',
   'https://host4u-web.onrender.com',
-  'https://pinkeshdpatel.github.io'
+  'https://pinkeshdpatel.github.io',
+  'https://host4u.projugaadu.com'
 ];
 
 // Create Express app
@@ -79,7 +80,9 @@ app.use(cors({
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 }));
 
 app.use(express.json({ limit: '100mb' }));
